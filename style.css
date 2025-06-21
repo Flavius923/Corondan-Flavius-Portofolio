@@ -1,0 +1,434 @@
+ * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #17082c;
+      color: #fff;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+    .page-wrapper {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+      
+    header {
+      padding: 30px 40px;
+      background-color: #111;
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%;
+      gap: 80px;
+      min-width: 900px;
+      margin: 0;
+    }
+    .text-section {
+      white-space: nowrap;
+    }
+    .text-section h1 {
+      font-size: 1.8rem;
+      margin: -15px 0 5px 0;
+    }
+    
+    .project-description h2 {
+       font-size: 1.3rem;
+      margin: 0 25px;
+      margin-top: 40px;
+      opacity: 0.5;
+      transition: opacity 0.5s ease-out;
+
+    }
+
+    /* Clasa pentru proiectul activ */
+    .project.project-active .project-description h2 {
+      opacity: 1;
+      transition: opacity 1.5s ease;
+    }
+    
+    .text-section p {
+      font-size: 1.5rem;
+      margin: 40px 10px 0;
+      font-weight: bold;
+    }
+    .profile-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-left: 140px;
+    }
+    .profile-gallery img {
+      width: 80px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 5px solid #4a3160;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+    .profile-gallery img:hover {
+      transform: scale(1.05);
+    }
+    .section {
+      padding: 10px;
+      margin: 10px;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .image-box {
+      position: relative;
+      min-height: 20px;
+      width: 100%;
+      background-color: #4a3160;
+      padding:20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row; /* Schimbat pentru a alinia imaginea și textul pe orizontală */
+      gap: 10px;
+   
+
+      
+  overflow: hidden;
+  max-height: 120px;
+  opacity: 0.6; /* 80% transparent */
+  transition: max-height 1s ease; /* 0.5 secunde pentru retragere */
+    }
+
+    .image-box:hover {
+      /* Pentru a arăta efectul de hover și a lansa animația textului */
+      max-height: 1000px;
+      opacity: 1;
+      }
+
+  /* 1. NORMAL: ascund prompt-ul complet */
+.image-box .prompt {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+/* 2. NORMAL: celelalte elemente (imagini, titlu etc) le poți lăsa la 0.6 */
+.image-box img,
+.image-box .project-description h2,
+.image-box img.main-img,
+.image-box .arrow,
+.image-box .plansa-redusa {
+  opacity: 0.6;
+  transition: opacity 0.5s ease-out;
+}
+
+/* 3. HOVER: arăt prompt-ul și celelalte elemente full opacity */
+.image-box:hover .prompt {
+  opacity: 1;
+}
+.image-box:hover img,
+.image-box:hover .project-description h2,
+.image-box:hover img.main-img,
+.image-box:hover .arrow,
+.image-box:hover .plansa-redusa {
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+
+
+ 
+    .image-box.open {
+  /* Când este deschis, se extinde mai lent */
+  max-height: 1000px;  /* O valoare suficient de mare pentru a afișa tot conținutul */
+  opacity: 1;  
+  transition: max-height 2s ease; /* 1.5 secunde pentru deschidere */
+}
+
+
+
+    .image-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .image-box img.main-img {
+      width: 450px;
+      max-width: 100%;
+      display: block;
+      border-radius: 5px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .plansa-redusa {
+      width: 445px !important;
+    }
+    .coperta-redusa {
+      width: 445px !important;
+      height: auto;
+    }
+    .sub-gallery {
+      padding-left: 0px;
+      display: flex;
+      gap: 15px;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      width: 800px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      margin-left: 30px;
+    }
+
+    .box-adjust .sub-gallery {
+      padding-left: 0px;
+      display: flex;
+      gap: 15px;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      width:1100px;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      margin-left: 30px;
+    }
+
+
+    
+    .sub-gallery::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .sub-gallery img {
+      height: 125px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      margin-right: 10px;
+      border-radius: 10px;
+    }
+
+
+
+    .sub-gallery-large img {
+  height: 170px;
+}
+
+.box-adjust .sub-gallery img {
+  height: 170px;
+}
+
+
+    .image-box img.main-img:hover,
+    .sub-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .prompt {
+  width: 250px; /* Lățimea fixă dorită */
+  white-space: normal; /* Permite textului să se împartă pe mai multe rânduri */
+  text-align: justify; /* Aliniere la dreapta */
+  font-size: 0.75rem;
+  color: white;
+  padding: 5px;
+  margin-left: auto;
+  margin-top: 45px;
+  overflow-wrap: break-word;
+  position: relative;
+  overflow: visible;
+  border-right: 2px solid transparent;
+  
+}
+
+.box-adjust .prompt {
+   width: 250px; /* Lățimea fixă dorită */
+  white-space: normal; /* Permite textului să se împartă pe mai multe rânduri */
+  text-align: justify; /* Aliniere la dreapta */
+  font-size: 0.75rem;
+  color: white;
+  padding: 5px;
+  margin-left: auto;
+  margin-top: 45px;
+  overflow-wrap: break-word;
+  position: relative;
+  overflow: visible;
+  border-right: 2px solid transparent;
+  
+}
+ /* Fiecare literă este într-un span cu clasa .letter */
+    .prompt .letter {
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: inherit;
+  white-space: pre;
+  opacity: 0;
+  transform: translateY(0.3em);
+  will-change: opacity, transform;
+  animation-fill-mode: forwards;
+  transform: translateY(0.01em);
+  /* elimina orice altă animație default */
+  animation: none;
+    }
+
+
+
+    /* La hover pe containerul părinte (image-box) declanșăm animația */
+   .image-box:hover .prompt .letter {
+  animation-name: typewriterLetter;
+  animation-duration: 0.1s;
+  animation-timing-function: steps(1,end);
+  animation-fill-mode: forwards;
+}
+
+
+.animated-word {
+  /* Proprietatea white-space: nowrap este deja setată inline, dar poți seta și aici pentru siguranță */
+  white-space: nowrap;
+}
+
+
+
+
+
+   @keyframes typewriterLetter {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}
+
+
+
+
+
+.static-text {
+  color: rgb(255, 255, 255); /* Asigură că textul static va avea culoare albă */
+}
+  
+    .sub-gallery-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 650px;
+      overflow-x: visible;
+      margin-top: 50px;
+    }
+
+    .box-adjust .sub-gallery-wrapper {
+   position: relative;
+      display: flex;
+      align-items: center;
+      width:1100px;
+      overflow-x: visible;
+      margin-top: 5px;
+    }
+
+    .arrow {
+      position: absolute;
+      width: 30px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.655);
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      clip-path: polygon(0% 0%, 100% 50%, 0% 100%, 0% 50%);
+    }
+    .arrow.arrow-left {
+      transform: translateY(-50%) scaleX(-1);
+      left: -5px;
+    }
+    .arrow.arrow-right {
+      right: -36px;
+    }
+
+    
+
+    #lightbox {
+      position: fixed;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      padding: 20px;
+      overflow: auto;
+    }
+    #lightbox img {
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      transition: opacity 0.3s ease-in-out;
+      display: block;
+      margin: auto;
+      width: 95vw;
+      max-height: 95vh;
+    }
+    #lightbox:after {
+      content: "✖";
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+
+
+    .expand-indicator {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  font-size: 3rem;
+  color: #ffffff;
+  opacity: 0.6;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+   transform: translateX(-100%) scaleX(2); /* întins orizontal */
+}
+
+
+.image-box:hover .expand-indicator {
+  opacity: 0;
+   }
+
+
+
+
+
+   .contact-info {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.contact-info img {
+  width: 24px;
+  height: 24px;
+  filter: invert(1); /* pentru icon alb pe fundal închis */
+}
+
+.contact-text {
+  font-size: 0.9rem;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.contact-text:hover {
+  opacity: 1;
+}
+
+
+
